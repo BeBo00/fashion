@@ -1,0 +1,280 @@
+body {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    direction: rtl;
+}
+
+header {
+    background-color: #8b5e3c;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.container {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.267);
+    padding: 0px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    max-width: fit-content;
+    position: absolute;
+}
+
+.background-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-image: url('back.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    filter: blur(3px);
+    z-index: -1;
+}
+
+
+.nav {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 30px;
+    border-radius: 18px;
+    margin: 10px;
+    display: inline-flex;
+    box-shadow: 0px -3px 11px blanchedalmond;
+}
+
+
+.nav-links {
+    list-style: none;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin: 20px;
+    padding: 5px;
+    display: inline-flex;
+}
+
+.nav-links li a {
+    font-size: 24px;
+    font-weight: bold;
+    color: gold;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: 0.4s;
+    box-shadow: 05px -1px 12px black;
+}
+
+.nav-links li a:hover {
+    background-color: gold;
+    color: black;
+
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    padding: 10px;
+}
+
+.gallery img {
+    width: 150px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 3px solid #d2b48c;
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+    /* تكبير خفيف */
+    filter: brightness(1.1);
+    /* زيادة إضاءة */
+    cursor: pointer;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    flex-direction: column;
+}
+
+.popup img {
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 10px;
+    box-shadow: 0 0 20px #fff;
+}
+
+.popup span#close-popup {
+    color: white;
+    font-size: 40px;
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    cursor: pointer;
+}
+
+.controls {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 30px;
+}
+
+.controls span {
+    color: white;
+    font-size: 50px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.buttons {
+    background-color: rgba(190, 140, 30, 0.548);
+    font-size: 30px;
+    border-radius: 18px;
+    margin: 10px;
+    display: inline-flex;
+}
+
+button {
+    font-size: 24px;
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    background-color: blue;
+    transition: 0.4s;
+}
+
+button:hover {
+    background-color: gold;
+    color: black;
+}
+
+.contact {
+    background-color: #f0e2d0;
+    padding: 20px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.contact a {
+    display: block;
+    margin: 10px 0;
+    color: #8b5e3c;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+
+
+/* أنيميشن fade-in عام */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* أنيميشن من اليمين */
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* أنيميشن تكبير خفيف */
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* تأثيرات مخصصة للموبايل فقط */
+@media (max-width: 768px) {
+    .nav {
+        animation: slideInRight 1s ease-out;
+    }
+
+    .nav-links li a {
+        animation: fadeIn 1s ease-in forwards;
+        animation-delay: 0.3s;
+    }
+
+    .gallery img {
+        animation: zoomIn 0.8s ease-in-out;
+    }
+
+    .buttons {
+        animation: slideInRight 1s ease-in;
+    }
+
+    .contact {
+        animation: fadeIn 1s ease-out;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 15px;
+        padding: 10px;
+        margin: 0;
+    }
+
+    .nav-links li a {
+        font-size: 20px;
+        width: 80%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .gallery img {
+        width: 30%;
+        /* أو جرب 48% حسب عدد الصور اللي عايزها في الصف */
+        height: auto;
+    }
+}
