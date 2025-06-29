@@ -21,6 +21,8 @@ header {
     padding: 0px;
     border-radius: 15px;
     display: flex;
+    flex-warp: wrap;
+    gap: 16px;
     justify-content: space-between;
     max-width: fit-content;
     position: absolute;
@@ -237,7 +239,7 @@ footer {
 }
 
 /* تأثيرات مخصصة للموبايل فقط */
-@media (max-width: 768px) {
+@media (max-width: 600px) {
     .nav {
         animation: slideInRight 1s ease-out;
     }
@@ -260,7 +262,7 @@ footer {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
     .nav {
         flex-direction: column;
         align-items: center;
@@ -281,7 +283,7 @@ footer {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
     .gallery img {
         width: 30%;
         /* أو جرب 48% حسب عدد الصور اللي عايزها في الصف */
