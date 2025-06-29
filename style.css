@@ -184,7 +184,16 @@ button:hover {
     font-weight: bold;
 }
 
-
+footer {
+    background: #3f4041da;
+    color: #f3eeee;
+    text-align: center;
+    padding: 16px 0;
+    font-size: 1rem;
+    border-top: 1px solid #b0b7be;
+    z-index: 100;
+    margin-top: auto;
+}
 
 
 /* أنيميشن fade-in عام */
