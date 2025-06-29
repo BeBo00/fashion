@@ -199,94 +199,20 @@ footer {
 }
 
 
-/* أنيميشن fade-in عام */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* أنيميشن من اليمين */
-@keyframes slideInRight {
-    from {
-        opacity: 0;
-        transform: translateX(100%);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-/* أنيميشن تكبير خفيف */
-@keyframes zoomIn {
-    from {
-        opacity: 0;
-        transform: scale(0.8);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-/* تأثيرات مخصصة للموبايل فقط */
-@media (max-width: 600px) {
-    .nav {
-        animation: slideInRight 1s ease-out;
-    }
-
-    .nav-links li a {
-        animation: fadeIn 1s ease-in forwards;
-        animation-delay: 0.3s;
-    }
-
-    .gallery img {
-        animation: zoomIn 0.8s ease-in-out;
-    }
-
-    .buttons {
-        animation: slideInRight 1s ease-in;
-    }
-
-    .contact {
-        animation: fadeIn 1s ease-out;
-    }
-
-
-        .nav {
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-    }
-
-    .nav-links {
-        flex-direction: column;
-        gap: 15px;
-        padding: 10px;
-        margin: 0;
-    }
-
-    .nav-links li a {
-        font-size: 20px;
-        width: 80%;
-        text-align: center;
-    }
-}
-
- .gallery img {
-        width: 30%;
-        /* أو جرب 48% حسب عدد الصور اللي عايزها في الصف */
-        height: auto;
-    }
-
+@media (max-width:600px)
+{
+top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.267);
+    padding: 0px;
+    border-radius: 15px;
+    display: flex;
+    flex-warp: wrap;
+    gap: 16px;
+    justify-content: space-between;
+    max-width: fit-content;
+    position: absolute;
+    
 }
 
