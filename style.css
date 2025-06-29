@@ -199,44 +199,43 @@ footer {
 }
 
 
-@media (max-width:600px)
-{
-top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.267);
-    padding: 0px;
-    border-radius: 15px;
-    display: flex;
-    flex-warp: wrap;
-    gap: 16px;
-    justify-content: space-between;
-    max-width: fit-content;
-    position: absolute;
-    
-}
+/* قاعدة للجوالات: من 0 إلى 600px */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.5rem;
+  }
 
-.container {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.267);
-    padding: 0px;
-    border-radius: 15px;
-    display: flex;
-    flex-warp: wrap;
-    gap: 16px;
-    justify-content: space-between;
-    max-width: fit-content;
-    position: absolute;
-}
-.nav {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: 30px;
-    border-radius: 18px;
-    margin: 10px;
-    display: inline-flex;
-    box-shadow: 0px -3px 11px blanchedalmond;
+  header p {
+    font-size: 1rem;
+  }
+
+  .gallery {
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .gallery img {
+    width: 100%;
+    height: auto;
+    max-width: 400px;
+    border: 2px solid #d2b48c;
+  }
+
+  button {
+    width: 90%;
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  .contact {
+    font-size: 16px;
+    padding: 15px;
+  }
+
+  .contact a {
+    margin: 8px 0;
+  }
 }
 
 
