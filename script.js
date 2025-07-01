@@ -38,7 +38,7 @@ const images = document.querySelectorAll(".gallery img");
   });
 function openMap() {
   // غير الإحداثيات حسب موقع الورشة الحقيقي
-  window.open("https://maps.app.goo.gl/cYL45eBPGK3kQXTP7", "_blank");
+  window.open("https://maps.app.goo.gl/w3pRcVndBBxiBUmb8", "_blank");
 }
 
 
