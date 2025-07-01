@@ -1,7 +1,5 @@
-function openMap() {
-  // غير الإحداثيات حسب موقع الورشة الحقيقي
-  window.open("https://maps.app.goo.gl/YTXgK5eKN7Ls5zzj6", "_blank");
-}
+
+
 const images = document.querySelectorAll(".gallery img");
   const popup = document.getElementById("image-popup");
   const popupImg = document.getElementById("popup-img");
@@ -37,4 +35,64 @@ const images = document.querySelectorAll(".gallery img");
 
   popup.addEventListener("click", (e) => {
     if (e.target === popup) popup.style.display = "none";
+  });
+function openMap() {
+  // غير الإحداثيات حسب موقع الورشة الحقيقي
+  window.open("https://maps.app.goo.gl/YTXgK5eKN7Ls5zzj6", "_blank");
+}
+  document.addEventListener('DOMContentLoaded', function () {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let totalItems = 0;
+
+    cart.forEach(item => {
+      totalItems += item.quantity || 1;
+    });
+
+    const cartCountEl = document.getElementById('cart-count');
+    if (cartCountEl) {
+      cartCountEl.textContent = totalItems;
+    }
+  });
+
+
+
+  // كود تحديث عداد السلة
+  function updateCartCount() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let totalItems = 0;
+    cart.forEach(item => {
+      totalItems += item.quantity || 1;
+    });
+    const cartCountEl = document.getElementById('cart-count');
+    if (cartCountEl) {
+      cartCountEl.textContent = totalItems;
+    }
+  }
+//نهايته
+
+  // إضافة منتج للسلة
+  function addToCart(product) {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.push(product);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartCount();
+  }
+
+  // عند تحميل الصفحة
+  document.addEventListener('DOMContentLoaded', function () {
+    updateCartCount();
+
+    const addButtons = document.querySelectorAll('.add-to-cart');
+    addButtons.forEach((button) => {
+      button.addEventListener('click', function () {
+        const card = this.closest('.product-card');
+        const product = {
+          name: card.querySelector('.product-name').textContent,
+          price: card.querySelector('.product-price').textContent,
+          image: card.querySelector('img').getAttribute('src'),
+        };
+        addToCart(product);
+        alert('تمت إضافة المنتج للسلة');
+      });
+    });
   });
