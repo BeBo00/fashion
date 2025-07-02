@@ -7,8 +7,6 @@
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
-/* تصغير الكروت على الموبايل */
-
 body {
     min-height: 100vh;
     display: flex;
