@@ -1,56 +1,157 @@
 
 
-const images = document.querySelectorAll(".gallery img");
-  const popup = document.getElementById("image-popup");
-  const popupImg = document.getElementById("popup-img");
-  const closeBtn = document.getElementById("close-popup");
-  const prevBtn = document.getElementById("prev");
-  const nextBtn = document.getElementById("next");
 
-  let currentIndex = 0;
 
-  function showPopup(index) {
-    popup.style.display = "flex";
-    popupImg.src = images[index].src;
-    currentIndex = index;
-  }
 
-  images.forEach((img, i) => {
-    img.addEventListener("click", () => showPopup(i));
-  });
-
-  closeBtn.addEventListener("click", () => {
-    popup.style.display = "none";
-  });
-
-  nextBtn.addEventListener("click", () => {
-    currentIndex = (currentIndex + 1) % images.length;
-    popupImg.src = images[currentIndex].src;
-  });
-
-  prevBtn.addEventListener("click", () => {
-    currentIndex = (currentIndex - 1 + images.length) % images.length;
-    popupImg.src = images[currentIndex].src;
-  });
-
-  popup.addEventListener("click", (e) => {
-    if (e.target === popup) popup.style.display = "none";
-  });
+/*const teamMembers = [
+	{ name: "Emily Kim", role: "Founder" },
+	{ name: "Michael Steward", role: "Creative Director" },
+	{ name: "Emma Rodriguez", role: "Lead Developer" },
+	{ name: "Julia Gimmel", role: "UX Designer" },
+	{ name: "Lisa Anderson", role: "Marketing Manager" },
+	{ name: "James Wilson", role: "Product Manager" }
+];*/
 function openMap() {
-  // غير الإحداثيات حسب موقع الورشة الحقيقي
-  window.open("https://maps.app.goo.gl/w3pRcVndBBxiBUmb8", "_blank");
+	// غير الإحداثيات حسب موقع الورشة الحقيقي
+	window.open("https://maps.app.goo.gl/H9BZQLefi9oyuNsC7", "_blank");
 }
 
 
-  // كود تحديث عداد السلة
-  
-//نهايته
+const cards = document.querySelectorAll(".card");
+const dots = document.querySelectorAll(".dot");
 
-  // إضافة منتج للسلة
- 
+const leftArrow = document.querySelector(".nav-arrow.left");
+const rightArrow = document.querySelector(".nav-arrow.right");
+let currentIndex = 0;
+let isAnimating = false;
 
-  // عند تحميل الصفحة
- 
-      });
-    });
-  });
+function updateCarousel(newIndex) {
+	if (isAnimating) return;
+	isAnimating = true;
+
+	currentIndex = (newIndex + cards.length) % cards.length;
+
+	cards.forEach((card, i) => {
+		const offset = (i - currentIndex + cards.length) % cards.length;
+
+		card.classList.remove(
+			"center",
+			"left-1",
+			"left-2",
+			"right-1",
+			"right-2",
+			"hidden"
+		);
+
+		if (offset === 0) {
+			card.classList.add("center");
+		} else if (offset === 1) {
+			card.classList.add("right-1");
+		} else if (offset === 2) {
+			card.classList.add("right-2");
+		} else if (offset === cards.length - 1) {
+			card.classList.add("left-1");
+		} else if (offset === cards.length - 2) {
+			card.classList.add("left-2");
+		} else {
+			card.classList.add("hidden");
+		}
+	});
+
+	dots.forEach((dot, i) => {
+		dot.classList.toggle("active", i === currentIndex);
+	});
+
+
+
+	setTimeout(() => {
+		isAnimating = false;
+	}, 800);
+}
+
+leftArrow.addEventListener("click", () => {
+	updateCarousel(currentIndex - 1);
+});
+
+rightArrow.addEventListener("click", () => {
+	updateCarousel(currentIndex + 1);
+});
+
+dots.forEach((dot, i) => {
+	dot.addEventListener("click", () => {
+		updateCarousel(i);
+
+	});
+});
+
+cards.forEach((card, i) => {
+	card.addEventListener("click", () => {
+		updateCarousel(i);
+
+
+		const img = card.querySelector("img");
+		if (img && img.src) {
+			popupImg.src = img.src;
+			popup.style.display = "flex";
+		}
+	});
+});
+
+document.addEventListener("keydown", (e) => {
+	if (e.key === "ArrowLeft") {
+		updateCarousel(currentIndex - 1);
+	} else if (e.key === "ArrowRight") {
+		updateCarousel(currentIndex + 1);
+	}
+});
+
+let touchStartX = 0;
+let touchEndX = 0;
+
+document.addEventListener("touchstart", (e) => {
+	touchStartX = e.changedTouches[0].screenX;
+});
+
+document.addEventListener("touchend", (e) => {
+	touchEndX = e.changedTouches[0].screenX;
+	handleSwipe();
+});
+
+function handleSwipe() {
+	const swipeThreshold = 50;
+	const diff = touchStartX - touchEndX;
+
+	if (Math.abs(diff) > swipeThreshold) {
+		if (diff > 0) {
+			updateCarousel(currentIndex + 1);
+		} else {
+			updateCarousel(currentIndex - 1);
+		}
+	}
+}
+
+updateCarousel(0);
+
+
+
+
+
+
+
+
+
+
+
+const popup = document.getElementById("image-popup");
+const popupImg = document.querySelector(".popup-img");
+const closeBtn = document.querySelector(".close");
+
+closeBtn.addEventListener("click", () => {
+	popup.style.display = "none";
+});
+
+popup.addEventListener("click", (e) => {
+	if (e.target === popup) {
+		popup.style.display = "none";
+	}
+});
