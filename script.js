@@ -108,11 +108,13 @@ document.addEventListener("keydown", (e) => {
 let touchStartX = 0;
 let touchEndX = 0;
 
-document.addEventListener("touchstart", (e) => {
+const carouselContainer = document.querySelector(".carousel-container");
+
+carouselContainer.addEventListener("touchstart", (e) => {
 	touchStartX = e.changedTouches[0].screenX;
 });
 
-document.addEventListener("touchend", (e) => {
+carouselContainer.addEventListener("touchend", (e) => {
 	touchEndX = e.changedTouches[0].screenX;
 	handleSwipe();
 });
