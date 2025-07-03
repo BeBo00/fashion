@@ -1224,16 +1224,6 @@ h1 {
 
 
 
-.card.left-1,
-
-.card.right-1 {
-
-    transform: translateX(100px) scale(0.85) translateZ(-100px);
-
-}
-
-
-
 .card.left-2,
 
 .card.right-2 {
